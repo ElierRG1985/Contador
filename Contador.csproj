@@ -63,17 +63,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="AppTabbedPage.xaml.cs">
+	    <DependentUpon>AppTabbedPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="ContadorCopia.xaml.cs">
 	    <DependentUpon>ContadorCopia.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Contador.xaml">
+	  <MauiXaml Update="AppTabbedPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewPage2.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

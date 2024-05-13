@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="Contador.AppTabbedPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Contador.Views"
+    BarBackgroundColor="DarkGray"
+    BarTextColor="White">
+
+    <NavigationPage Title="CONTADOR">
+        <x:Arguments>
+            <local:NewPage1/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="CALCULADORA">
+        <x:Arguments>
+            <local:NewPage2/>
+        </x:Arguments>
+    </NavigationPage>
+
+    <!--<ContentPage Title="CALCULADORA">
+        <Label
+            HorizontalOptions="Center"
+            Text="tgrhtrjhtrhtrhthhrhrhrI!"
+            VerticalOptions="Center" />
+    </ContentPage>-->
+</TabbedPage>

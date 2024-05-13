@@ -6,7 +6,7 @@
         {
             InitializeComponent();
 
-            MainPage = new Contador();
+            MainPage = new AppTabbedPage();
         }
     }
 }
