@@ -12,7 +12,7 @@
             <local:NewPage1/>
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="CALCULADORA">
+    <NavigationPage Title="CALCULADORA" >
         <x:Arguments>
             <local:NewPage2/>
         </x:Arguments>
