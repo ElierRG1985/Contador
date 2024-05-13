@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage 
+    x:Class="Contador.Contador"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BarBackgroundColor="DarkGray"
+    BarTextColor="White">
+    <ContentPage Title="CONTADOR">
+        <Label
+            HorizontalOptions="Center"
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" />
+    </ContentPage>
+    <ContentPage Title="CALCULADORA" >
+        <Label
+            HorizontalOptions="Center"
+            Text="tgrhtrjhtrhtrhthhrhrhrI!"
+            VerticalOptions="Center" />
+    </ContentPage>
+</TabbedPage>
