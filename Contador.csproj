@@ -24,7 +24,7 @@
 		<ApplicationTitle>Contador</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.contador</ApplicationId>
+		<ApplicationId>contador</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -40,10 +40,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appicon.png" Color="Transparent" ForegrooundScale="0.35" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splasherg.png" Color="#424242" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -57,6 +57,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Views\Calculadora.xaml.cs" />
+	  <Compile Remove="Views\Contador.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Views\Calculadora.xaml" />
+	  <MauiXaml Remove="Views\Contador.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -69,16 +81,22 @@
 	  <Compile Update="ContadorCopia.xaml.cs">
 	    <DependentUpon>ContadorCopia.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\CalculadoraTabbed.xaml.cs">
+	    <DependentUpon>CalculadoraTabbed.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ContadorTabbed.xaml.cs">
+	    <DependentUpon>ContadorTabbed.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="AppTabbedPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\NewPage1.xaml">
+	  <MauiXaml Update="Views\CalculadoraTabbed.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\NewPage2.xaml">
+	  <MauiXaml Update="Views\ContadorTabbed.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

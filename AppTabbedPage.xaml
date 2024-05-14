@@ -4,17 +4,17 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Contador.Views"
-    BarBackgroundColor="DarkGray"
+    BarBackgroundColor="#424242"
     BarTextColor="White">
 
     <NavigationPage Title="CONTADOR">
         <x:Arguments>
-            <local:NewPage1/>
+            <local:Contador />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="CALCULADORA" >
+    <NavigationPage Title="CALCULADORA">
         <x:Arguments>
-            <local:NewPage2/>
+            <local:Calculadora />
         </x:Arguments>
     </NavigationPage>
 
@@ -24,4 +24,5 @@
             Text="tgrhtrjhtrhtrhthhrhrhrI!"
             VerticalOptions="Center" />
     </ContentPage>-->
+    
 </TabbedPage>

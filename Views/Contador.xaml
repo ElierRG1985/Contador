@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Contador.Views.Contador"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:converters="clr-namespace:Contador.Converters"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    xmlns:viewModel1="clr-namespace:Contador.ViewModel"
+    xmlns:views="clr-namespace:Contador.Views"
+    Title="Contador"
+    x:DataType="viewModel1:ViewModel"
+    BackgroundColor="#424242"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Behaviors>
+        <behaviors:StatusBarBehavior StatusBarColor="#424242" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="SairaRegular" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="FontFamily" Value="SairaRegular" />
+            <Setter Property="Keyboard" Value="Numeric" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+        <Style x:Key="ButtonOtherStyle" TargetType="Button">
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="BackgroundColor" Value="#E0E0E0" />
+            <Setter Property="TextColor" Value="Grey" />
+            <Setter Property="FontFamily" Value="SairaRegular" />
+            <Setter Property="FontSize" Value="25" />
+        </Style>
+        <Style x:Key="ButtonCalculusStyle" TargetType="Button">
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="TextColor" Value="Gray" />
+            <Setter Property="FontSize" Value="45" />
+            <Setter Property="FontFamily" Value="SairaRegular" />
+            <Setter Property="BackgroundColor" Value="#E0E0E0" />
+        </Style>
+        <Style x:Key="ButtonNumberStyle" TargetType="Button">
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="TextColor" Value="#656565" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontFamily" Value="SairaRegular" />
+            <Setter Property="BackgroundColor" Value="#EEEEEE" />
+        </Style>
+        <!--  ReSharper disable Xaml.RedundantResource  -->
+        <system:Int32 x:Key="1">1</system:Int32>
+        <system:Int32 x:Key="2">2</system:Int32>
+        <system:Int32 x:Key="3">3</system:Int32>
+        <system:Int32 x:Key="4">4</system:Int32>
+        <system:Int32 x:Key="5">5</system:Int32>
+        <system:Int32 x:Key="6">6</system:Int32>
+        <system:Int32 x:Key="7">7</system:Int32>
+        <system:Int32 x:Key="8">8</system:Int32>
+        <system:Int32 x:Key="9">9</system:Int32>
+        <system:Int32 x:Key="0">0</system:Int32>
+        <!--  ReSharper restore Xaml.RedundantResource  -->
+        <!--<converters:AutoWidthConverter x:Key="AutoWidthConverter" />-->
+        <converters:OperationsToTextConverter x:Key="OperationsToTextConverter" />
+        <converters:EmptyResultConverter x:Key="EmptyResultConverter" />
+
+
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*,70">
+
+        <Grid
+            Grid.Row="0"
+            Margin="0,20,0,0"
+            RowDefinitions="3*,*,*,*,*,*,*,*,*,*,*,*,.5*">
+            <Grid Grid.Row="0">
+                <Grid RowDefinitions="*,3*">
+
+                    <!--<StackLayout Orientation="Horizontal"
+                           Padding="20,10,0,0">
+                        <Label Text="{Binding CopyTitle}"
+                                FontSize="25"
+                           TextColor="Gray"
+                           FontFamily="SairaRegular"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
+                           Padding="0,0,10,0"/>
+
+                        <Label Text="{Binding CopyNumb}"
+                           FontSize="25"
+                           Grid.Row="0"
+                           TextColor="Gray"
+                           FontFamily="SairaRegular"
+                           HorizontalTextAlignment="Start"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"/>
+                    </StackLayout>-->
+
+                    <Label
+                        Padding="20,10,20,0"
+                        FontFamily="SairaRegular"
+                        FontSize="25"
+                        HorizontalTextAlignment="End"
+                        TextColor="Gray"
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="USD/EUR = " TextColor="Gray" />
+                                <Span FontFamily="SairaRegular" Text="{Binding CurrentCalculationMoney}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label
+                        Grid.Row="1"
+                        Padding="20,10"
+                        FontSize="50"
+                        HorizontalTextAlignment="End"
+                        TextColor="White"
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontSize="25"
+                                    Text="CUP  =  "
+                                    TextColor="Gray" />
+                                <Span FontFamily="SairaRegular" Text="{Binding CurrentCalculationTwo}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    HorizontalTextAlignment="Center"
+                    Text="1"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCurrent1"
+                    Grid.Column="1"
+                    Focused="Current1_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding Current1}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Grid Grid.Row="2" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    HorizontalTextAlignment="Center"
+                    Text="5"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCurrent5"
+                    Grid.Column="1"
+                    Focused="Current5_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding Current5}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Grid Grid.Row="3" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    HorizontalTextAlignment="Center"
+                    Text="10"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCurrent10"
+                    Grid.Column="1"
+                    Focused="Current10_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding Current10}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Grid Grid.Row="4" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    HorizontalTextAlignment="Center"
+                    Text="20"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCurrent20"
+                    Grid.Column="1"
+                    Focused="Current20_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding Current20}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Grid Grid.Row="5" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    HorizontalTextAlignment="Center"
+                    Text="50"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCurrent50"
+                    Grid.Column="1"
+                    Focused="Current50_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding Current50}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Grid Grid.Row="6" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    HorizontalTextAlignment="Center"
+                    Text="100"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCurrent100"
+                    Grid.Column="1"
+                    Focused="Current100_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding Current100}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Grid Grid.Row="7" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    HorizontalTextAlignment="Center"
+                    Text="200"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCurrent200"
+                    Grid.Column="1"
+                    Focused="Current200_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding Current200}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Grid Grid.Row="8" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    HorizontalTextAlignment="Center"
+                    Text="500"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCurrent500"
+                    Grid.Column="1"
+                    Focused="Current500_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding Current500}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Grid Grid.Row="9" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    HorizontalTextAlignment="Center"
+                    Text="1000"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCurrent1000"
+                    Grid.Column="1"
+                    Focused="Current1000_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding Current1000}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <!--<Grid Grid.Row="10"
+                  ColumnDefinitions="*,*">
+                <Image Source="paste.png"
+                       WidthRequest="18"/>
+
+                <Entry Grid.Column="1"
+                       VerticalOptions="End"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Keyboard="Numeric"
+                       TextColor="LightGray"
+                       Text="{Binding CurrentPaste}"
+                       Focused="CurrentPaste_OnFocused">
+            -->
+            <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+            <!--
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MinimumValue="0"
+                            MaximumDecimalPlaces="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>-->
+            <Grid Grid.Row="10" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    FontSize="15"
+                    HorizontalTextAlignment="Center"
+                    Text="USD/EUR Cambio"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyChangeMoney"
+                    Grid.Column="1"
+                    Focused="ChangeMoney_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding ChangeMoney}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Grid Grid.Row="11" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    Padding="0,0,0,4"
+                    FontSize="15"
+                    HorizontalTextAlignment="Center"
+                    Text="USD/EUR Cantidad"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center" />
+                <Entry
+                    x:Name="MyCantMoney"
+                    Grid.Column="1"
+                    Focused="CantMoney_OnFocused"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Text="{Binding CantMoney}"
+                    TextColor="LightGray"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center">
+                    <!--  ReturnCommand="{Binding CurrentCommand}">  -->
+                    <Entry.Behaviors>
+                        <behaviors:NumericValidationBehavior
+                            Flags="ValidateOnValueChanged"
+                            MaximumDecimalPlaces="0"
+                            MinimumValue="0" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" ColumnDefinitions="*,*">
+            <Button
+                Grid.Column="0"
+                BackgroundColor="#9e9e9e"
+                BorderColor="#424242"
+                BorderWidth="0"
+                Command="{Binding CopyPasteTwoCommand}"
+                CornerRadius="0"
+                FontSize="25"
+                Text="❐"
+                TextColor="#656565" />
+            <Button
+                Grid.Column="1"
+                BackgroundColor="#bdbdbd"
+                BorderColor="#424242"
+                BorderWidth="0"
+                Command="{Binding ClearTwoCommand}"
+                CornerRadius="0"
+                FontSize="15"
+                Text="❌"
+                TextColor="#D81738" />
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
