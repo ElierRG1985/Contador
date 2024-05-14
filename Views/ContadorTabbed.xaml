@@ -135,7 +135,7 @@
                                 <Span
                                         FontSize="25"
                                         Text="CUP  =  "
-                                        TextColor="Red" />
+                                        TextColor="White" />
                                 <Span FontFamily="SairaRegular" Text="{Binding CurrentCalculationTwo}" />
                             </FormattedString>
                         </Label.FormattedText>
