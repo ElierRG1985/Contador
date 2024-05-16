@@ -214,10 +214,10 @@
             <Button
                 Grid.Row="0"
                 Grid.Column="2"
-                Padding="0,0,0,6"
+                Padding="0,0,0,8"
                 Command="{Binding BackSpaceCommand}"
-                FontSize="35"
-                Style="{StaticResource ButtonOtherStyle}"
+                FontSize="45"
+                Style="{StaticResource ButtonCalculusStyle}"
                 Text="⇦" />
             <Button
                 Grid.Row="0"
