@@ -78,14 +78,14 @@
 
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="*,70">
+    <Grid RowDefinitions="*,70" >
 
         <Grid
             Grid.Row="0"
             Margin="0,20,0,0"
-            RowDefinitions="3*,*,*,*,*,*,*,*,*,*,*,*,.5*">
+            RowDefinitions="2*,.3*,*,*,*,*,*,*,*,*,*,*,*,.3*">
             <Grid Grid.Row="0">
-                <Grid RowDefinitions="*,2.5*">
+                <Grid RowDefinitions="*,*" >
 
                     <!--<StackLayout Orientation="Horizontal"
                            Padding="20,10,0,0">
@@ -107,8 +107,8 @@
                            VerticalTextAlignment="Center"/>
                     </StackLayout>-->
 
-                    <Label BackgroundColor="Red"
-                        Padding="20,10,20,0"
+                    <Label
+                        Padding="20,0,20,0" 
                         FontFamily="SairaRegular"
                         FontSize="25"
                         HorizontalTextAlignment="End"
@@ -116,16 +116,16 @@
                         VerticalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="USD/EUR = " TextColor="Gray" />
+                                <Span FontSize="25" Text="USD/EUR = " TextColor="Gray" />
                                 <Span
-                                    FontFamily="SairaRegular"
+                                    FontFamily="SairaRegular" FontSize="40"
                                     Text="{Binding CurrentCalculationMoney}"
-                                    TextColor="White" />
+                                    TextColor="Gray" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
 
-                    <Label BackgroundColor="Green"
+                    <Label
                         Grid.Row="1"
                         Padding="20,0"
                         FontSize="40"
@@ -148,7 +148,7 @@
 
                 </Grid>
             </Grid>
-            <Grid Grid.Row="1" ColumnDefinitions="*,*">
+            <Grid Grid.Row="2" ColumnDefinitions="*,*" >
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -176,7 +176,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <Grid Grid.Row="2" ColumnDefinitions="*,*">
+            <Grid Grid.Row="3" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -204,7 +204,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <Grid Grid.Row="3" ColumnDefinitions="*,*">
+            <Grid Grid.Row="4" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -232,7 +232,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <Grid Grid.Row="4" ColumnDefinitions="*,*">
+            <Grid Grid.Row="5" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -260,7 +260,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <Grid Grid.Row="5" ColumnDefinitions="*,*">
+            <Grid Grid.Row="6" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -288,7 +288,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <Grid Grid.Row="6" ColumnDefinitions="*,*">
+            <Grid Grid.Row="7" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -316,7 +316,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <Grid Grid.Row="7" ColumnDefinitions="*,*">
+            <Grid Grid.Row="8" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -344,7 +344,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <Grid Grid.Row="8" ColumnDefinitions="*,*">
+            <Grid Grid.Row="9" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -372,7 +372,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <Grid Grid.Row="9" ColumnDefinitions="*,*">
+            <Grid Grid.Row="10" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -425,7 +425,7 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>-->
-            <Grid Grid.Row="10" ColumnDefinitions="*,*">
+            <Grid Grid.Row="11" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -454,10 +454,10 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <Grid Grid.Row="11" ColumnDefinitions="*,*">
+            <Grid Grid.Row="12" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,0"
                     FontSize="15"
                     HorizontalTextAlignment="Center"
                     Text="USD/EUR Cantidad"
@@ -487,7 +487,8 @@
         <Grid Grid.Row="1" ColumnDefinitions="*,*">
             <Button
                 Grid.Column="0"
-                BackgroundColor="#9e9e9e"
+                Margin="0,0,0,0"
+                BackgroundColor="#DEAE6A"
                 BorderColor="#424242"
                 BorderWidth="0"
                 Command="{Binding CopyPasteTwoCommand}"
@@ -497,12 +498,13 @@
                 TextColor="#656565" />
             <Button
                 Grid.Column="1"
-                BackgroundColor="#bdbdbd"
+                Margin="0,0,0,0"
+                BackgroundColor="#D9D9D9"
                 BorderColor="#424242"
                 BorderWidth="0"
                 Command="{Binding ClearTwoCommand}"
                 CornerRadius="0"
-                FontSize="15"
+                FontSize="18"
                 Text="❌"
                 TextColor="#D81738" />
         </Grid>

@@ -22,18 +22,18 @@
         <Style x:Key="ButtonOtherStyle" TargetType="Button">
             <Setter Property="BorderWidth" Value="0" />
             <Setter Property="CornerRadius" Value="0" />
-            <Setter Property="BackgroundColor" Value="#E0E0E0" />
-            <Setter Property="TextColor" Value="Grey" />
+            <Setter Property="BackgroundColor" Value="#DEAE6A" />
+            <Setter Property="TextColor" Value="#656565" />
             <Setter Property="FontFamily" Value="SairaRegular" />
             <Setter Property="FontSize" Value="25" />
         </Style>
         <Style x:Key="ButtonCalculusStyle" TargetType="Button">
             <Setter Property="BorderWidth" Value="0" />
             <Setter Property="CornerRadius" Value="0" />
-            <Setter Property="TextColor" Value="Gray" />
+            <Setter Property="TextColor" Value="#656565" />
             <Setter Property="FontSize" Value="45" />
             <Setter Property="FontFamily" Value="SairaRegular" />
-            <Setter Property="BackgroundColor" Value="#E0E0E0" />
+            <Setter Property="BackgroundColor" Value="#DEAE6A" />
         </Style>
         <Style x:Key="ButtonNumberStyle" TargetType="Button">
             <Setter Property="BorderWidth" Value="0" />
@@ -41,7 +41,7 @@
             <Setter Property="TextColor" Value="#656565" />
             <Setter Property="FontSize" Value="25" />
             <Setter Property="FontFamily" Value="SairaRegular" />
-            <Setter Property="BackgroundColor" Value="#EEEEEE" />
+            <Setter Property="BackgroundColor" Value="#D9D9D9" />
         </Style>
         <!--  ReSharper disable Xaml.RedundantResource  -->
         <system:Int32 x:Key="1">1</system:Int32>
@@ -109,7 +109,7 @@
 
                     <Label
                         Grid.Row="1"
-                        Margin="0,15,0,0"
+                        Margin="0,5,0,0"
                         FontFamily="SairaRegular"
                         FontSize="35"
                         HorizontalOptions="FillAndExpand"
