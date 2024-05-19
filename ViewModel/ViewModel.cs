@@ -38,10 +38,14 @@ namespace Contador.ViewModel
         [ObservableProperty] string _currentCalculationMoney = "0";
         [ObservableProperty] int _currentCalculationTwo = 0;
         [ObservableProperty] bool _isEnable = false;
+        [ObservableProperty] bool _isEnableContador = false;
+        [ObservableProperty] bool _isEnableCero = false;
+        [ObservableProperty] bool _isEnableNum = true;
         [ObservableProperty] bool _isEnableClear = false;
         [ObservableProperty] bool _isEnableCopy = false;
         [ObservableProperty] bool _isEnableDecimalPoint = true;
         [ObservableProperty] bool _isEnableParentheses = true;
+        [ObservableProperty] bool _isEnableCalculus = false;
         [ObservableProperty] bool _isBalanced = true;
         [ObservableProperty] string _current1 = "0";
         [ObservableProperty] string _current5 = "0";
@@ -95,8 +99,10 @@ namespace Contador.ViewModel
 
             CountClear ++;
 
+            IsEnableNum = true;
             IsEnableDecimalPoint = true;
             IsEnableParentheses = true;
+            IsEnableCalculus = false;
             IsEnableAction();
         }
 
@@ -130,8 +136,10 @@ namespace Contador.ViewModel
                 Operations.Add(operation);
             OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
 
+            IsEnableNum = true;
             IsEnableDecimalPoint = true;
-
+            IsEnableParentheses = true;
+            IsEnableCalculus = false;
         }
 
         [RelayCommand]
@@ -160,7 +168,10 @@ namespace Contador.ViewModel
             {
                 var posPoint = Operations[pos - 1].IndexOf(".", StringComparison.Ordinal);
                 if (Operations[pos - 1].Length - posPoint > 2)
+                {
+                    IsEnableNum = false;
                     return;
+                }
             }
 
             if (Operations[pos - 1].Contains('('))
@@ -181,6 +192,11 @@ namespace Contador.ViewModel
             ExecuteCalculus();
 
             IsEnableAction();
+
+            if (!Operations.Contains("("))
+            {
+                IsEnableParentheses = false;
+            }
         }
 
         [RelayCommand]
@@ -403,7 +419,7 @@ namespace Contador.ViewModel
             OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
 
             IsEnableDecimalPoint = false;
-
+            IsEnableCero = true;
         }
 
         [RelayCommand]
@@ -455,6 +471,10 @@ namespace Contador.ViewModel
                 //CurrentCalculation = 0;
                 CurrentCalculation = "";
                 OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
+
+                IsEnableCopy = false;
+                IsEnableCalculus = false;
+                IsEnableParentheses = false;
             }
         }
 
@@ -522,6 +542,12 @@ namespace Contador.ViewModel
             {
                 $"{CurrentCalculationTwo}"
             };
+
+            IsEnableClear = true;
+            IsEnable = true;
+            IsEnableCero = true;
+            IsEnableParentheses = false;
+            IsEnableCalculus = false;
         }
 
         bool ParenthesesBalance()
@@ -941,6 +967,8 @@ namespace Contador.ViewModel
                 var calculusRound = (float)RedondearACincoCentimos(calculus);
                 CurrentCalculationMoney = $"{calculusRound:F2}";
             }
+
+            IsEnableContadorAction();
         }
         private void Recalcular()
         {
@@ -1067,6 +1095,8 @@ namespace Contador.ViewModel
             CurrentPaste = "0";
             ChangeMoney = "0";
             CantMoney = "0";
+
+            IsEnableContador = false;
         }
 
         [RelayCommand]
@@ -1074,6 +1104,7 @@ namespace Contador.ViewModel
         {
             IsEnable = true;
             IsEnableClear = true;
+            IsEnableCero = true;
 
             var negative = false;
             if (CurrentCalculation is not null) 
@@ -1103,6 +1134,7 @@ namespace Contador.ViewModel
             {
                 IsEnable = false;
                 IsEnableClear = false;
+                IsEnableCero = false;
                 IsEnableCopy = false;
             }
 
@@ -1115,15 +1147,30 @@ namespace Contador.ViewModel
             if (Operations[pos - 1].Contains("."))
             {
                 IsEnableDecimalPoint = false;
+                IsEnableCero = true;
+            }
+            if (Operations[pos - 1].EndsWith(".0"))
+            {
+                IsEnableDecimalPoint = false;
+                IsEnableCero = false;
+            }
+            if (Operations[pos - 1].Contains("."))
+            {
+                var posPoint = Operations[pos - 1].IndexOf(".", StringComparison.Ordinal);
+                if (Operations[pos - 1].Length - posPoint > 2)
+                {
+                    IsEnableCero = false;
+                    IsEnableNum = false;
+                }
             }
 
             IsEnableParentheses = true;
             if (System.Text.RegularExpressions.Regex.IsMatch(Operations[pos - 1], @"^\d+(\.\d+)?$"))
             {
-                if (ParentesisTitle == "[ ]")
-                {
-                    //IsEnableParentheses = false;
-                }
+                //if (ParentesisTitle == "[ ]")
+                //{
+                //    IsEnableParentheses = false;
+                //}
                 if (pos > 1 && Operations[pos - 2] is "(")
                 {
                     IsEnableParentheses = false;
@@ -1136,8 +1183,18 @@ namespace Contador.ViewModel
                 IsEnableParentheses = false;
             }
 
-
+            if (CurrentCalculation != "")
+            {
+                IsEnableCalculus = true;
+            }
         }
 
+        void IsEnableContadorAction()
+        {
+            if (CurrentCalculationTwo != 0)
+            {
+                IsEnableContador = true;
+            } 
+        }
     }
 }

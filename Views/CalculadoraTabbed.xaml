@@ -123,43 +123,63 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <Border StrokeShape="RoundRectangle 15,15,0,0" StrokeThickness="-1">
+            <Border
+                BackgroundColor="#DEAE6A"
+                StrokeShape="RoundRectangle 20,20,0,0"
+                StrokeThickness="-1">
                 <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*,*">
-                    <Button
+                    <Grid
                         Grid.Row="4"
                         Grid.Column="0"
-                        Command="{Binding ParenthesesCommand}"
-                        FontSize="30"
-                        IsEnabled="{Binding IsEnableParentheses}"
-                        Style="{StaticResource ButtonOtherStyle}"
-                        Text="{Binding ParentesisTitle}" />
-                    <Button
+                        BackgroundColor="#D9D9D9">
+                        <Border StrokeShape="RoundRectangle 0,10,0,0" StrokeThickness="-1">
+                            <Button
+                                Command="{Binding ParenthesesCommand}"
+                                FontSize="30"
+                                IsEnabled="{Binding IsEnableParentheses}"
+                                Style="{StaticResource ButtonOtherStyle}"
+                                Text="{Binding ParentesisTitle}" />
+                        </Border>
+                    </Grid>
+                    <Border
                         Grid.Row="3"
                         Grid.Column="0"
-                        Command="{Binding SelectNumberCommand}"
-                        CommandParameter="{x:StaticResource 1}"
-                        Style="{StaticResource ButtonNumberStyle}"
-                        Text="1" />
+                        StrokeShape="RoundRectangle 0,0,10,0"
+                        StrokeThickness="-1">
+                        <Button
+                            Command="{Binding SelectNumberCommand}"
+                            CommandParameter="{x:StaticResource 1}"
+                            IsEnabled="{Binding IsEnableNum}"
+                            Style="{StaticResource ButtonNumberStyle}"
+                            Text="1" />
+                    </Border>
                     <Button
                         Grid.Row="3"
                         Grid.Column="1"
                         Command="{Binding SelectNumberCommand}"
                         CommandParameter="{x:StaticResource 2}"
                         Style="{StaticResource ButtonNumberStyle}"
+                            IsEnabled="{Binding IsEnableNum}"
                         Text="2" />
-                    <Button
+                    <Border
                         Grid.Row="3"
                         Grid.Column="2"
-                        Command="{Binding SelectNumberCommand}"
-                        CommandParameter="{x:StaticResource 3}"
-                        Style="{StaticResource ButtonNumberStyle}"
-                        Text="3" />
+                        StrokeShape="RoundRectangle 0,0,0,10"
+                        StrokeThickness="-1">
+                        <Button
+                            Command="{Binding SelectNumberCommand}"
+                            CommandParameter="{x:StaticResource 3}"
+                            Style="{StaticResource ButtonNumberStyle}"
+                            IsEnabled="{Binding IsEnableNum}"
+                            Text="3" />
+                    </Border>
                     <Button
                         Grid.Row="2"
                         Grid.Column="0"
                         Command="{Binding SelectNumberCommand}"
                         CommandParameter="{x:StaticResource 4}"
                         Style="{StaticResource ButtonNumberStyle}"
+                            IsEnabled="{Binding IsEnableNum}"
                         Text="4" />
                     <Button
                         Grid.Row="2"
@@ -167,6 +187,7 @@
                         Command="{Binding SelectNumberCommand}"
                         CommandParameter="{x:StaticResource 5}"
                         Style="{StaticResource ButtonNumberStyle}"
+                            IsEnabled="{Binding IsEnableNum}"
                         Text="5" />
                     <Button
                         Grid.Row="2"
@@ -174,28 +195,40 @@
                         Command="{Binding SelectNumberCommand}"
                         CommandParameter="{x:StaticResource 6}"
                         Style="{StaticResource ButtonNumberStyle}"
+                            IsEnabled="{Binding IsEnableNum}"
                         Text="6" />
-                    <Button
+                    <Border
                         Grid.Row="1"
                         Grid.Column="0"
-                        Command="{Binding SelectNumberCommand}"
-                        CommandParameter="{x:StaticResource 7}"
-                        Style="{StaticResource ButtonNumberStyle}"
-                        Text="7" />
+                        StrokeShape="RoundRectangle 10,0,0,0"
+                        StrokeThickness="-1">
+                        <Button
+                            Command="{Binding SelectNumberCommand}"
+                            CommandParameter="{x:StaticResource 7}"
+                            Style="{StaticResource ButtonNumberStyle}"
+                            IsEnabled="{Binding IsEnableNum}"
+                            Text="7" />
+                    </Border>
                     <Button
                         Grid.Row="1"
                         Grid.Column="1"
                         Command="{Binding SelectNumberCommand}"
                         CommandParameter="{x:StaticResource 8}"
                         Style="{StaticResource ButtonNumberStyle}"
+                            IsEnabled="{Binding IsEnableNum}"
                         Text="8" />
-                    <Button
+                    <Border
                         Grid.Row="1"
                         Grid.Column="2"
-                        Command="{Binding SelectNumberCommand}"
-                        CommandParameter="{x:StaticResource 9}"
-                        Style="{StaticResource ButtonNumberStyle}"
-                        Text="9" />
+                        StrokeShape="RoundRectangle 0,10,0,0"
+                        StrokeThickness="-1">
+                        <Button
+                            Command="{Binding SelectNumberCommand}"
+                            CommandParameter="{x:StaticResource 9}"
+                            Style="{StaticResource ButtonNumberStyle}"
+                            IsEnabled="{Binding IsEnableNum}"
+                            Text="9" />
+                    </Border>
                     <Button
                         Grid.Row="0"
                         Grid.Column="0"
@@ -262,25 +295,30 @@
                         Grid.Column="1"
                         Command="{Binding SelectNumberCommand}"
                         CommandParameter="{x:StaticResource 0}"
-                        IsEnabled="{Binding IsEnable}"
+                        IsEnabled="{Binding IsEnableCero}"
                         Style="{StaticResource ButtonNumberStyle}"
                         Text="0" />
-                    <Button
+                    <Grid
                         Grid.Row="4"
                         Grid.Column="2"
-                        Padding="0,0,0,6"
-                        Command="{Binding DecimalPointCommand}"
-                        CommandParameter="."
-                        FontSize="35"
-                        IsEnabled="{Binding IsEnableDecimalPoint}"
-                        Style="{StaticResource ButtonOtherStyle}"
-                        Text="." />
+                        BackgroundColor="#D9D9D9">
+                        <Border StrokeShape="RoundRectangle 10,0,0,0" StrokeThickness="-1">
+                            <Button
+                                Padding="0,0,0,6"
+                                Command="{Binding DecimalPointCommand}"
+                                CommandParameter="."
+                                FontSize="35"
+                                IsEnabled="{Binding IsEnableDecimalPoint}"
+                                Style="{StaticResource ButtonOtherStyle}"
+                                Text="." />
+                        </Border>
+                    </Grid>
                     <Button
                         Grid.Row="4"
                         Grid.Column="3"
                         Padding="0,0,0,7"
                         Command="{Binding CalculusCommand}"
-                        IsEnabled="{Binding IsEnable}"
+                        IsEnabled="{Binding IsEnableCalculus}"
                         Style="{StaticResource ButtonCalculusStyle}"
                         Text="=" />
                 </Grid>
