@@ -24,6 +24,7 @@ namespace Contador.ViewModel
         [ObservableProperty] string _currentCalculation;
         [ObservableProperty] double _fontSize;
         [ObservableProperty] int _countClear = 0;
+        [ObservableProperty] bool _countCopy = false;
         [ObservableProperty] string _copyNumb = "";
         [ObservableProperty] int _copyNumbTwo = 0;
         [ObservableProperty] string _copyPasteTitle;
@@ -37,6 +38,10 @@ namespace Contador.ViewModel
         [ObservableProperty] string _currentCalculationMoney = "0";
         [ObservableProperty] int _currentCalculationTwo = 0;
         [ObservableProperty] bool _isEnable = false;
+        [ObservableProperty] bool _isEnableClear = false;
+        [ObservableProperty] bool _isEnableCopy = false;
+        [ObservableProperty] bool _isEnableDecimalPoint = true;
+        [ObservableProperty] bool _isEnableParentheses = true;
         [ObservableProperty] bool _isBalanced = true;
         [ObservableProperty] string _current1 = "0";
         [ObservableProperty] string _current5 = "0";
@@ -62,7 +67,10 @@ namespace Contador.ViewModel
         [RelayCommand]
         void Clear()
         {
-            if (CountClear == 1)
+            if (CountCopy)
+            {
+                CountCopy = false;
+            } else
             {
                 CopyNumb = "";
                 CopyPasteTitle = "❐";
@@ -86,6 +94,10 @@ namespace Contador.ViewModel
             CurrentPaste = "0";
 
             CountClear ++;
+
+            IsEnableDecimalPoint = true;
+            IsEnableParentheses = true;
+            IsEnableAction();
         }
 
         [RelayCommand]
@@ -117,6 +129,9 @@ namespace Contador.ViewModel
             else
                 Operations.Add(operation);
             OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
+
+            IsEnableDecimalPoint = true;
+
         }
 
         [RelayCommand]
@@ -162,7 +177,10 @@ namespace Contador.ViewModel
             }
 
             OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
+
             ExecuteCalculus();
+
+            IsEnableAction();
         }
 
         [RelayCommand]
@@ -332,6 +350,8 @@ namespace Contador.ViewModel
 
             OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
             ExecuteCalculus();
+
+            IsEnableAction();
         }
 
         [RelayCommand]
@@ -354,29 +374,36 @@ namespace Contador.ViewModel
             {
                 Operations.Add("0.");
                 OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
+                IsEnableDecimalPoint = false;
                 return;
             }
             if (Operations[pos - 1].EndsWith("×"))
             {
                 Operations.Add("0.");
                 OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
+                IsEnableDecimalPoint = false;
                 return;
             }
             if (Operations[pos - 1].EndsWith("–"))
             {
                 Operations.Add("0.");
                 OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
+                IsEnableDecimalPoint = false;
                 return;
             }
             if (Operations[pos - 1].EndsWith("+"))
             {
                 Operations.Add("0.");
                 OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
+                IsEnableDecimalPoint = false;
                 return;
             }
 
             Operations[pos - 1] += value;
             OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
+
+            IsEnableDecimalPoint = false;
+
         }
 
         [RelayCommand]
@@ -434,15 +461,8 @@ namespace Contador.ViewModel
         [RelayCommand]
         void CopyPaste()
         {
-            if (CurrentCalculation is null) return;
+            //if (CurrentCalculation is null) return;
 
-            var negative = false;
-            if (CurrentCalculation.Contains("-"))
-            {
-                negative = true;
-            }
-            if (CurrentCalculation is not " = 0" && negative == false)
-            {
                 var pos = Operations.Count;
 
                 if (CurrentCalculation is not "" && CopyPasteTitle != "❏")
@@ -459,6 +479,8 @@ namespace Contador.ViewModel
                     CopyNumb = CurrentPaste;
                     CopyPasteTitle = "❏";
                     CopyTitle = "❐";
+                    CountCopy = true;
+                    IsEnableAction();
 
                     return;
                 }
@@ -483,7 +505,6 @@ namespace Contador.ViewModel
                         CopyNumb = "";
                     }
                 }
-            };
         }
 
         [RelayCommand]
@@ -491,7 +512,7 @@ namespace Contador.ViewModel
         {
             if (CurrentCalculationTwo is 0) return;
 
-            //Navigation("Calculadora");
+            //TO DO Navigation("Calculadora");
 
             CopyNumbTwo = CurrentCalculationTwo;
 
@@ -524,6 +545,9 @@ namespace Contador.ViewModel
         [RelayCommand]
         void Parentheses()
         {
+            IsEnableDecimalPoint = false;
+            IsEnableParentheses = false;
+
             var pos = Operations.Count;
 
             if (Operations[0] is "0")
@@ -612,12 +636,14 @@ namespace Contador.ViewModel
                 //ParentesisTitle = "[ ]";
             }
 
-            if (Operations.Contains(")"))
-            {
-                ParentesisTitle = "][";
-                IsBalanced = true;
-                return;
-            }
+            //if (Operations.Contains(")"))
+            //{
+            //    ParentesisTitle = "][";
+            //    IsBalanced = true;
+            //    return;
+            //}
+
+            IsEnableAction();
         }
 
         [RelayCommand]
@@ -1042,5 +1068,76 @@ namespace Contador.ViewModel
             ChangeMoney = "0";
             CantMoney = "0";
         }
+
+        [RelayCommand]
+        void IsEnableAction()
+        {
+            IsEnable = true;
+            IsEnableClear = true;
+
+            var negative = false;
+            if (CurrentCalculation is not null) 
+            {
+                if (CurrentCalculation is not "" && CopyPasteTitle != "❏")
+                {
+                    if (CurrentCalculation.Contains("-"))
+                    {
+                        negative = true;
+                        IsEnableCopy = false;
+                    }
+
+                    if (CurrentCalculation is not " = 0" && negative == false)
+                    {
+                        IsEnableCopy = true;
+                    };
+                }
+            }
+            if (CopyPasteTitle == "❏")
+            {
+                IsEnableCopy = false;
+            }
+
+            var pos = Operations.Count;
+
+            if (Operations[0] is "0")
+            {
+                IsEnable = false;
+                IsEnableClear = false;
+                IsEnableCopy = false;
+            }
+
+            if (CopyNumb != "")
+            {
+                IsEnableClear = true;
+            }
+
+            IsEnableDecimalPoint = true;
+            if (Operations[pos - 1].Contains("."))
+            {
+                IsEnableDecimalPoint = false;
+            }
+
+            IsEnableParentheses = true;
+            if (System.Text.RegularExpressions.Regex.IsMatch(Operations[pos - 1], @"^\d+(\.\d+)?$"))
+            {
+                if (ParentesisTitle == "[ ]")
+                {
+                    //IsEnableParentheses = false;
+                }
+                if (pos > 1 && Operations[pos - 2] is "(")
+                {
+                    IsEnableParentheses = false;
+                }
+            }
+            if (Operations.Contains(")"))
+            {
+                ParentesisTitle = "][";
+                IsBalanced = true;
+                IsEnableParentheses = false;
+            }
+
+
+        }
+
     }
 }

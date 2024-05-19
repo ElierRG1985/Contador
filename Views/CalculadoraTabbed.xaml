@@ -122,157 +122,169 @@
             </Grid>
         </Grid>
 
-        <Grid
-            Grid.Row="1"
-            ColumnDefinitions="*,*,*,*"
-            RowDefinitions="*,*,*,*,*">
-            <Button
-                Grid.Row="4"
-                Grid.Column="0"
-                Command="{Binding ParenthesesCommand}"
-                FontSize="30"
-                Style="{StaticResource ButtonOtherStyle}"
-                Text="{Binding ParentesisTitle}" />
-            <Button
-                Grid.Row="3"
-                Grid.Column="0"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 1}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="1" />
-            <Button
-                Grid.Row="3"
-                Grid.Column="1"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 2}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="2" />
-            <Button
-                Grid.Row="3"
-                Grid.Column="2"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 3}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="3" />
-            <Button
-                Grid.Row="2"
-                Grid.Column="0"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 4}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="4" />
-            <Button
-                Grid.Row="2"
-                Grid.Column="1"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 5}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="5" />
-            <Button
-                Grid.Row="2"
-                Grid.Column="2"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 6}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="6" />
-            <Button
-                Grid.Row="1"
-                Grid.Column="0"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 7}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="7" />
-            <Button
-                Grid.Row="1"
-                Grid.Column="1"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 8}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="8" />
-            <Button
-                Grid.Row="1"
-                Grid.Column="2"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 9}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="9" />
-            <Button
-                Grid.Row="0"
-                Grid.Column="0"
-                Command="{Binding ClearCommand}"
-                FontSize="25"
-                Style="{StaticResource ButtonOtherStyle}"
-                Text="❌"
-                TextColor="#D81738" />
-            <Button
-                Grid.Row="0"
-                Grid.Column="1"
-                Command="{Binding CopyPasteCommand}"
-                FontSize="30"
-                Style="{StaticResource ButtonOtherStyle}"
-                Text="{Binding CopyPasteTitle}" />
-            <Button
-                Grid.Row="0"
-                Grid.Column="2"
-                Padding="0,0,0,19"
-                Command="{Binding BackSpaceCommand}"
-                FontSize="45"
-                Style="{StaticResource ButtonCalculusStyle}"
-                Text="⇦" />
-            <Button
-                Grid.Row="0"
-                Grid.Column="3"
-                Padding="0,0,0,3"
-                Command="{Binding OperationActionCommand}"
-                CommandParameter="÷"
-                Style="{StaticResource ButtonCalculusStyle}"
-                Text="÷" />
-            <Button
-                Grid.Row="1"
-                Grid.Column="3"
-                Padding="0,0,0,7"
-                Command="{Binding OperationActionCommand}"
-                CommandParameter="×"
-                Style="{StaticResource ButtonCalculusStyle}"
-                Text="×" />
-            <Button
-                Grid.Row="2"
-                Grid.Column="3"
-                Command="{Binding OperationActionCommand}"
-                CommandParameter="–"
-                Style="{StaticResource ButtonCalculusStyle}"
-                Text="–" />
-            <Button
-                Grid.Row="3"
-                Grid.Column="3"
-                Padding="0,0,0,8"
-                Command="{Binding OperationActionCommand}"
-                CommandParameter="+"
-                Style="{StaticResource ButtonCalculusStyle}"
-                Text="+" />
-            <Button
-                Grid.Row="4"
-                Grid.Column="1"
-                Command="{Binding SelectNumberCommand}"
-                CommandParameter="{x:StaticResource 0}"
-                Style="{StaticResource ButtonNumberStyle}"
-                Text="0" />
-            <Button
-                Grid.Row="4"
-                Grid.Column="2"
-                Padding="0,0,0,6"
-                Command="{Binding DecimalPointCommand}"
-                CommandParameter="."
-                FontSize="35"
-                Style="{StaticResource ButtonOtherStyle}"
-                Text="." />
-            <Button
-                Grid.Row="4"
-                Grid.Column="3"
-                Padding="0,0,0,7"
-                Command="{Binding CalculusCommand}"
-                Style="{StaticResource ButtonCalculusStyle}"
-                Text="=" />
+        <Grid Grid.Row="1">
+            <Border StrokeShape="RoundRectangle 15,15,0,0" StrokeThickness="-1">
+                <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*,*">
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Command="{Binding ParenthesesCommand}"
+                        FontSize="30"
+                        IsEnabled="{Binding IsEnableParentheses}"
+                        Style="{StaticResource ButtonOtherStyle}"
+                        Text="{Binding ParentesisTitle}" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 1}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="1" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 2}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="2" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 3}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="3" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 4}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="4" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 5}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="5" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 6}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="6" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 7}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="7" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 8}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="8" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 9}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="9" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Command="{Binding ClearCommand}"
+                        FontSize="25"
+                        IsEnabled="{Binding IsEnableClear}"
+                        Style="{StaticResource ButtonOtherStyle}"
+                        Text="❌"
+                        TextColor="#D81738" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Command="{Binding CopyPasteCommand}"
+                        FontSize="30"
+                        IsEnabled="{Binding IsEnableCopy}"
+                        Style="{StaticResource ButtonOtherStyle}"
+                        Text="{Binding CopyPasteTitle}" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Padding="0,0,0,19"
+                        Command="{Binding BackSpaceCommand}"
+                        FontSize="45"
+                        IsEnabled="{Binding IsEnable}"
+                        Style="{StaticResource ButtonCalculusStyle}"
+                        Text="⇦" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Padding="0,0,0,3"
+                        Command="{Binding OperationActionCommand}"
+                        CommandParameter="÷"
+                        IsEnabled="{Binding IsEnable}"
+                        Style="{StaticResource ButtonCalculusStyle}"
+                        Text="÷" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Padding="0,0,0,7"
+                        Command="{Binding OperationActionCommand}"
+                        CommandParameter="×"
+                        IsEnabled="{Binding IsEnable}"
+                        Style="{StaticResource ButtonCalculusStyle}"
+                        Text="×" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Command="{Binding OperationActionCommand}"
+                        CommandParameter="–"
+                        IsEnabled="{Binding IsEnable}"
+                        Style="{StaticResource ButtonCalculusStyle}"
+                        Text="–" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Padding="0,0,0,8"
+                        Command="{Binding OperationActionCommand}"
+                        CommandParameter="+"
+                        IsEnabled="{Binding IsEnable}"
+                        Style="{StaticResource ButtonCalculusStyle}"
+                        Text="+" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Command="{Binding SelectNumberCommand}"
+                        CommandParameter="{x:StaticResource 0}"
+                        IsEnabled="{Binding IsEnable}"
+                        Style="{StaticResource ButtonNumberStyle}"
+                        Text="0" />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Padding="0,0,0,6"
+                        Command="{Binding DecimalPointCommand}"
+                        CommandParameter="."
+                        FontSize="35"
+                        IsEnabled="{Binding IsEnableDecimalPoint}"
+                        Style="{StaticResource ButtonOtherStyle}"
+                        Text="." />
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="3"
+                        Padding="0,0,0,7"
+                        Command="{Binding CalculusCommand}"
+                        IsEnabled="{Binding IsEnable}"
+                        Style="{StaticResource ButtonCalculusStyle}"
+                        Text="=" />
+                </Grid>
+            </Border>
         </Grid>
     </Grid>
 

@@ -78,14 +78,21 @@
 
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="*,70" >
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Offset="0.1" Color="#424242" />
+            <GradientStop Offset="1.0" Color="#282828" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="*,70">
 
         <Grid
             Grid.Row="0"
             Margin="0,20,0,0"
             RowDefinitions="2*,.3*,*,*,*,*,*,*,*,*,*,*,*,.3*">
             <Grid Grid.Row="0">
-                <Grid RowDefinitions="*,*" >
+                <Grid RowDefinitions="*,*">
 
                     <!--<StackLayout Orientation="Horizontal"
                            Padding="20,10,0,0">
@@ -108,7 +115,7 @@
                     </StackLayout>-->
 
                     <Label
-                        Padding="20,0,20,0" 
+                        Padding="20,0,20,0"
                         FontFamily="SairaRegular"
                         FontSize="25"
                         HorizontalTextAlignment="End"
@@ -116,9 +123,13 @@
                         VerticalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span FontSize="25" Text="USD/EUR = " TextColor="Gray" />
                                 <Span
-                                    FontFamily="SairaRegular" FontSize="40"
+                                    FontSize="25"
+                                    Text="USD/EUR = "
+                                    TextColor="Gray" />
+                                <Span
+                                    FontFamily="SairaRegular"
+                                    FontSize="40"
                                     Text="{Binding CurrentCalculationMoney}"
                                     TextColor="Gray" />
                             </FormattedString>
@@ -148,7 +159,7 @@
 
                 </Grid>
             </Grid>
-            <Grid Grid.Row="2" ColumnDefinitions="*,*" >
+            <Grid Grid.Row="2" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     Padding="0,0,0,4"
@@ -485,28 +496,32 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1" ColumnDefinitions="*,*">
-            <Button
+            <Border
                 Grid.Column="0"
-                Margin="0,0,0,0"
-                BackgroundColor="#DEAE6A"
-                BorderColor="#424242"
-                BorderWidth="0"
-                Command="{Binding CopyPasteTwoCommand}"
-                CornerRadius="0"
-                FontSize="25"
-                Text="❐"
-                TextColor="#656565" />
-            <Button
+                StrokeShape="RoundRectangle 5,0,0,0"
+                StrokeThickness="-1">
+                <Button
+                    BackgroundColor="#DEAE6A"
+                    BorderWidth="0"
+                    Command="{Binding CopyPasteTwoCommand}"
+                    CornerRadius="0"
+                    FontSize="25"
+                    Text="❐"
+                    TextColor="#656565" />
+            </Border>
+            <Border
                 Grid.Column="1"
-                Margin="0,0,0,0"
-                BackgroundColor="#D9D9D9"
-                BorderColor="#424242"
-                BorderWidth="0"
-                Command="{Binding ClearTwoCommand}"
-                CornerRadius="0"
-                FontSize="18"
-                Text="❌"
-                TextColor="#D81738" />
+                StrokeShape="RoundRectangle 0,5,0,0"
+                StrokeThickness="-1">
+                <Button
+                    BackgroundColor="#D9D9D9"
+                    BorderWidth="0"
+                    Command="{Binding ClearTwoCommand}"
+                    CornerRadius="0"
+                    FontSize="18"
+                    Text="❌"
+                    TextColor="#D81738" />
+            </Border>
         </Grid>
 
     </Grid>
