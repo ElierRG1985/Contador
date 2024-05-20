@@ -1238,6 +1238,11 @@ namespace Contador.ViewModel
                 IsEnableCopyContador = true;
                 TextColorCopy = "White";
             }
+            if (CurrentCalculationMoney != "0")
+            {
+                IsEnableClearContador = true;
+                TextColorClear = "White";
+            }
         }
     }
 }
