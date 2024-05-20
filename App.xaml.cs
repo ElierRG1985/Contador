@@ -56,6 +56,5 @@ namespace Contador
 #endif
                 });
         }
-
     }
 }

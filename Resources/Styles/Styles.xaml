@@ -14,7 +14,7 @@
     <Style TargetType="Border">
         <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
         <Setter Property="StrokeShape" Value="Rectangle" />
-        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeThickness" Value="-1" />
     </Style>
 
     <Style TargetType="BoxView">
@@ -37,8 +37,8 @@
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
-                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />
+                            <Setter Property="TextColor" Value="#767676" />
+                            <!--<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}" />-->
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="PointerOver" />

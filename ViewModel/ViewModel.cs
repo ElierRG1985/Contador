@@ -38,7 +38,8 @@ namespace Contador.ViewModel
         [ObservableProperty] string _currentCalculationMoney = "0";
         [ObservableProperty] int _currentCalculationTwo = 0;
         [ObservableProperty] bool _isEnable = false;
-        [ObservableProperty] bool _isEnableContador = false;
+        [ObservableProperty] bool _isEnableClearContador = false;
+        [ObservableProperty] bool _isEnableCopyContador = false;
         [ObservableProperty] bool _isEnableCero = false;
         [ObservableProperty] bool _isEnableNum = true;
         [ObservableProperty] bool _isEnableClear = false;
@@ -47,6 +48,8 @@ namespace Contador.ViewModel
         [ObservableProperty] bool _isEnableParentheses = true;
         [ObservableProperty] bool _isEnableCalculus = false;
         [ObservableProperty] bool _isBalanced = true;
+        [ObservableProperty] string _textColorClear = "Grey";
+        [ObservableProperty] string _textColorCopy = "Grey";
         [ObservableProperty] string _current1 = "0";
         [ObservableProperty] string _current5 = "0";
         [ObservableProperty] string _current10 = "0";
@@ -140,6 +143,7 @@ namespace Contador.ViewModel
             IsEnableDecimalPoint = true;
             IsEnableParentheses = true;
             IsEnableCalculus = false;
+            IsEnableAction();
         }
 
         [RelayCommand]
@@ -548,6 +552,8 @@ namespace Contador.ViewModel
             IsEnableCero = true;
             IsEnableParentheses = false;
             IsEnableCalculus = false;
+
+            //IsEnableCopyContador = false;
         }
 
         bool ParenthesesBalance()
@@ -595,6 +601,13 @@ namespace Contador.ViewModel
 
                 if (Operations[pos - 1] is not "+" or "–" or "÷" or "×")
                 {
+                    if (ParentesisTitle == "[ ]")
+                    {
+                        Operations.Add("(");
+                        OnPropertyChanged(nameof(ViewModel.Operations));
+                        ParentesisTitle = "[]";
+                        IsBalanced = false;
+                    }
                     return;
                 }
 
@@ -1096,7 +1109,10 @@ namespace Contador.ViewModel
             ChangeMoney = "0";
             CantMoney = "0";
 
-            IsEnableContador = false;
+            IsEnableClearContador = false;
+            IsEnableCopyContador = false;
+            TextColorClear = "Grey";
+            TextColorCopy = "Grey";
         }
 
         [RelayCommand]
@@ -1163,6 +1179,10 @@ namespace Contador.ViewModel
                     IsEnableNum = false;
                 }
             }
+            if (Enumerable.LastOrDefault<string>(Operations) is ")")
+            {
+                IsEnableDecimalPoint = false;
+            }
 
             IsEnableParentheses = true;
             if (System.Text.RegularExpressions.Regex.IsMatch(Operations[pos - 1], @"^\d+(\.\d+)?$"))
@@ -1182,6 +1202,26 @@ namespace Contador.ViewModel
                 IsBalanced = true;
                 IsEnableParentheses = false;
             }
+            if (ParentesisTitle == "[]")
+            {
+                if (Operations[pos - 1].EndsWith("÷"))
+                {
+                    IsEnableParentheses = false;
+                }
+                if (Operations[pos - 1].EndsWith("×"))
+                {
+                    IsEnableParentheses = false;
+                }
+                if (Operations[pos - 1].EndsWith("–"))
+                {
+                    IsEnableParentheses = false;
+                }
+                if (Operations[pos - 1].EndsWith("+"))
+                {
+                    IsEnableParentheses = false;
+                }
+
+            }
 
             if (CurrentCalculation != "")
             {
@@ -1193,8 +1233,11 @@ namespace Contador.ViewModel
         {
             if (CurrentCalculationTwo != 0)
             {
-                IsEnableContador = true;
-            } 
+                IsEnableClearContador = true;
+                TextColorClear = "White";
+                IsEnableCopyContador = true;
+                TextColorCopy = "White";
+            }
         }
     }
 }

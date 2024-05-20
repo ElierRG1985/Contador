@@ -40,7 +40,7 @@ class LabelAutoFontSize : Label
         double lowerTextHeight = TextHeightForFontSize(lowerFontSize);
 
         //determine the text height for the max font size
-        double upperFontSize = 50;
+        double upperFontSize = 60;
         double upperTextHeight = TextHeightForFontSize(upperFontSize);
 
         //start a loop which'll find the optimal font size

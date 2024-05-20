@@ -42,21 +42,19 @@
             <Setter Property="FontFamily" Value="SairaRegular" />
             <Setter Property="FontSize" Value="25" />
         </Style>
-        <Style x:Key="ButtonCalculusStyle" TargetType="Button">
+        <Style x:Key="ButtonCopyStyle" TargetType="Button">
             <Setter Property="BorderWidth" Value="0" />
             <Setter Property="CornerRadius" Value="0" />
-            <Setter Property="TextColor" Value="Gray" />
+            <Setter Property="TextColor" Value="#656565" />
             <Setter Property="FontSize" Value="45" />
             <Setter Property="FontFamily" Value="SairaRegular" />
-            <Setter Property="BackgroundColor" Value="#E0E0E0" />
         </Style>
-        <Style x:Key="ButtonNumberStyle" TargetType="Button">
+        <Style x:Key="ButtonClearStyle" TargetType="Button">
             <Setter Property="BorderWidth" Value="0" />
             <Setter Property="CornerRadius" Value="0" />
             <Setter Property="TextColor" Value="#656565" />
             <Setter Property="FontSize" Value="25" />
             <Setter Property="FontFamily" Value="SairaRegular" />
-            <Setter Property="BackgroundColor" Value="#EEEEEE" />
         </Style>
         <!--  ReSharper disable Xaml.RedundantResource  -->
         <system:Int32 x:Key="1">1</system:Int32>
@@ -73,24 +71,21 @@
         <!--<converters:AutoWidthConverter x:Key="AutoWidthConverter" />-->
         <converters:OperationsToTextConverter x:Key="OperationsToTextConverter" />
         <converters:EmptyResultConverter x:Key="EmptyResultConverter" />
-
-
-
     </ContentPage.Resources>
 
-    <ContentPage.Background>
+    <!--<ContentPage.Background>
         <LinearGradientBrush EndPoint="0,1">
             <GradientStop Offset="0.1" Color="#424242" />
             <GradientStop Offset="1.0" Color="#282828" />
         </LinearGradientBrush>
-    </ContentPage.Background>
+    </ContentPage.Background>-->
 
-    <Grid RowDefinitions="*,70">
+    <Grid RowDefinitions="*,40,10">
 
         <Grid
             Grid.Row="0"
             Margin="0,20,0,0"
-            RowDefinitions="2*,.3*,*,*,*,*,*,*,*,*,*,*,*,.3*">
+            RowDefinitions="2*,.3*,*,*,*,*,*,*,*,*,*,*,*,.15*">
             <Grid Grid.Row="0">
                 <Grid RowDefinitions="*,*">
 
@@ -124,7 +119,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span
-                                    FontSize="25"
+                                    FontSize="40"
                                     Text="USD/EUR = "
                                     TextColor="Gray" />
                                 <Span
@@ -146,8 +141,8 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span
-                                    FontSize="25"
-                                    Text="CUP  =  "
+                                    FontSize="40"
+                                    Text="CUP = "
                                     TextColor="White" />
                                 <Span
                                     FontFamily="SairaRegular"
@@ -162,9 +157,9 @@
             <Grid Grid.Row="2" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
                     HorizontalTextAlignment="Center"
                     Text="1"
+                    Padding="0,0,0,10"
                     TextColor="LightGray"
                     VerticalOptions="Fill"
                     VerticalTextAlignment="Center" />
@@ -190,7 +185,7 @@
             <Grid Grid.Row="3" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,10"
                     HorizontalTextAlignment="Center"
                     Text="5"
                     TextColor="LightGray"
@@ -218,7 +213,7 @@
             <Grid Grid.Row="4" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,10"
                     HorizontalTextAlignment="Center"
                     Text="10"
                     TextColor="LightGray"
@@ -246,7 +241,7 @@
             <Grid Grid.Row="5" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,10"
                     HorizontalTextAlignment="Center"
                     Text="20"
                     TextColor="LightGray"
@@ -274,7 +269,7 @@
             <Grid Grid.Row="6" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,10"
                     HorizontalTextAlignment="Center"
                     Text="50"
                     TextColor="LightGray"
@@ -302,7 +297,7 @@
             <Grid Grid.Row="7" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,10"
                     HorizontalTextAlignment="Center"
                     Text="100"
                     TextColor="LightGray"
@@ -330,7 +325,7 @@
             <Grid Grid.Row="8" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,10"
                     HorizontalTextAlignment="Center"
                     Text="200"
                     TextColor="LightGray"
@@ -358,7 +353,7 @@
             <Grid Grid.Row="9" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,10"
                     HorizontalTextAlignment="Center"
                     Text="500"
                     TextColor="LightGray"
@@ -386,7 +381,7 @@
             <Grid Grid.Row="10" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,10"
                     HorizontalTextAlignment="Center"
                     Text="1000"
                     TextColor="LightGray"
@@ -402,7 +397,6 @@
                     TextColor="LightGray"
                     VerticalOptions="Fill"
                     VerticalTextAlignment="Center">
-
                     <!--  ReturnCommand="{Binding CurrentCommand}">  -->
                     <Entry.Behaviors>
                         <behaviors:NumericValidationBehavior
@@ -412,37 +406,13 @@
                     </Entry.Behaviors>
                 </Entry>
             </Grid>
-            <!--<Grid Grid.Row="10"
-                  ColumnDefinitions="*,*">
-                <Image Source="paste.png"
-                       WidthRequest="18"/>
-
-                <Entry Grid.Column="1"
-                       VerticalOptions="End"
-                       VerticalTextAlignment="Center"
-                       HorizontalTextAlignment="Center"
-                       Keyboard="Numeric"
-                       TextColor="LightGray"
-                       Text="{Binding CurrentPaste}"
-                       Focused="CurrentPaste_OnFocused">
-            -->
-            <!--  ReturnCommand="{Binding CurrentCommand}">  -->
-            <!--
-                    <Entry.Behaviors>
-                        <behaviors:NumericValidationBehavior
-                            Flags="ValidateOnValueChanged"
-                            MinimumValue="0"
-                            MaximumDecimalPlaces="0" />
-                    </Entry.Behaviors>
-                </Entry>
-            </Grid>-->
             <Grid Grid.Row="11" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,4"
+                    Padding="0,0,0,10"
                     FontSize="15"
                     HorizontalTextAlignment="Center"
-                    Text="USD/EUR Cambio"
+                    Text="USD/EUR CAMBIO"
                     TextColor="LightGray"
                     VerticalOptions="Fill"
                     VerticalTextAlignment="Center" />
@@ -468,10 +438,10 @@
             <Grid Grid.Row="12" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
-                    Padding="0,0,0,0"
+                    Padding="0,0,0,10"
                     FontSize="15"
                     HorizontalTextAlignment="Center"
-                    Text="USD/EUR Cantidad"
+                    Text="USD/EUR CANTIDAD"
                     TextColor="LightGray"
                     VerticalOptions="Fill"
                     VerticalTextAlignment="Center" />
@@ -498,34 +468,40 @@
         <Grid Grid.Row="1" ColumnDefinitions="*,*">
             <Border
                 Grid.Column="0"
-                StrokeShape="RoundRectangle 10,0,0,0"
-                StrokeThickness="-1">
+                Margin="50,0,50,0"
+                StrokeShape="RoundRectangle 20"
+                StrokeThickness="1">
                 <Button
-                    BackgroundColor="#DEAE6A"
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
                     BorderWidth="0"
                     Command="{Binding CopyPasteTwoCommand}"
                     CornerRadius="0"
-                    FontSize="25"
-                    IsEnabled="{Binding IsEnableContador}"
-                    Text="❐"
-                    TextColor="#656565" />
+                    FontSize="20"
+                    IsEnabled="{Binding IsEnableCopyContador}"
+                    Style="{StaticResource ButtonClearStyle}"
+                    Text="COPIAR"
+                    TextColor="{Binding TextColorCopy}" />
             </Border>
             <Border
                 Grid.Column="1"
-                StrokeShape="RoundRectangle 0,10,0,0"
-                StrokeThickness="-1">
+                Margin="50,0,50,0"
+                StrokeShape="RoundRectangle 20"
+                StrokeThickness="1">
                 <Button
-                    BackgroundColor="#D9D9D9"
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
                     BorderWidth="0"
                     Command="{Binding ClearTwoCommand}"
                     CornerRadius="0"
-                    FontSize="18"
-                    IsEnabled="{Binding IsEnableContador}"
-                    Text="❌"
-                    TextColor="#D81738" />
+                    FontSize="20"
+                    IsEnabled="{Binding IsEnableClearContador}"
+                    Style="{StaticResource ButtonClearStyle}"
+                    Text="BORRAR"
+                    TextColor="{Binding TextColorClear}" />
             </Border>
         </Grid>
-
     </Grid>
-
 </ContentPage>
