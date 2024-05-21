@@ -24,7 +24,7 @@
 		<ApplicationTitle>Contador</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>contador</ApplicationId>
+		<ApplicationId>Contador-ERG</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>3.0</ApplicationDisplayVersion>
@@ -40,7 +40,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconwhite.png" Color="#424242" ForegrooundScale="0.15" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconwhite.png" Color="#424242" ForegrooundScale="0.5" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splasherg.png" Color="#424242" BaseSize="128,128" />

@@ -19,6 +19,8 @@ namespace Contador.ViewModel
             ParentesisTitle = "[ ]";
         }
 
+        private const string Value = ")";
+
         #endregion
 
         [ObservableProperty] string _currentCalculation;
@@ -31,10 +33,10 @@ namespace Contador.ViewModel
         [ObservableProperty] string _copyTitle = "";
         [ObservableProperty] string _parentesisTitle;
         [ObservableProperty] string _operationsHistory;
-        [ObservableProperty] ObservableCollection<string> _operations = new()
-        {
+        [ObservableProperty] ObservableCollection<string> _operations =
+        [
             "0"
-        };
+        ];
         [ObservableProperty] string _currentCalculationMoney = "0";
         [ObservableProperty] int _currentCalculationTwo = 0;
         [ObservableProperty] bool _isEnable = false;
@@ -64,12 +66,12 @@ namespace Contador.ViewModel
         [ObservableProperty] string _changeMoney = "0";
         [ObservableProperty] string _cantMoney = "0";
 
-        [RelayCommand]
-        async Task Navigation(string url)
-        {
-            await
-            Shell.Current.GoToAsync("///" + url);
-        }
+        //[RelayCommand]
+        //async Task Navigation(string url)
+        //{
+        //    await
+        //    Shell.Current.GoToAsync("///" + url);
+        //}
 
         [RelayCommand]
         void Clear()
@@ -87,10 +89,10 @@ namespace Contador.ViewModel
 
             OperationsHistory = "";
 
-            Operations = new()
-            {
+            Operations =
+            [
                 "0"
-            };
+            ];
             OnPropertyChanged(nameof(Contador.ViewModel.ViewModel.Operations));
             //CurrentCalculation = 0;
             CurrentCalculation = "";
@@ -116,7 +118,7 @@ namespace Contador.ViewModel
 
             if (!System.Text.RegularExpressions.Regex.IsMatch(Operations[pos - 1], @"^\d+(\.\d+)?$"))
             {
-                if (!Operations[pos - 1].EndsWith(")"))
+                if (!Operations[pos - 1].EndsWith(Value))
                 {
                     return;
                 }
@@ -159,9 +161,18 @@ namespace Contador.ViewModel
                 return;
             }
 
-            if (Operations[pos - 1].Length > 15)
+            if (Operations[pos - 1].Length == 12)
             {
-                //await DisplayAlert("Error", "Error 15 dígitos", "Cancel");
+                IsEnableNum = false;
+                IsEnableCero = false;
+                return;
+            }
+
+            if (CurrentCalculation is not null && CurrentCalculation.Length >= 15)
+            {
+                //IsEnable = false;
+                IsEnableNum = false;
+                IsEnableCero = false;
                 return;
             }
 
@@ -542,10 +553,10 @@ namespace Contador.ViewModel
 
             Clear();
 
-            Operations = new()
-            {
+            Operations =
+            [
                 $"{CurrentCalculationTwo}"
-            };
+            ];
 
             IsEnableClear = true;
             IsEnable = true;

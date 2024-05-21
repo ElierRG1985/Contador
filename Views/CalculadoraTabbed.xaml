@@ -31,7 +31,7 @@
             <Setter Property="BorderWidth" Value="0" />
             <Setter Property="CornerRadius" Value="0" />
             <Setter Property="TextColor" Value="#656565" />
-            <Setter Property="FontSize" Value="50" />
+            <Setter Property="FontSize" Value="60" />
             <Setter Property="FontFamily" Value="SairaRegular" />
             <Setter Property="BackgroundColor" Value="#CCB285" />
         </Style>
@@ -256,12 +256,12 @@
                     <Button
                         Grid.Row="0"
                         Grid.Column="2"
-                        Padding="0,0,0,2"
+                        Padding="0,0,0,8"
                         Command="{Binding BackSpaceCommand}"
-                        FontSize="40"
-                        IsEnabled="{Binding IsEnable}"
+                        FontSize="50"
+                        IsEnabled="{Binding IsEnableBackSpace}"
                         Style="{StaticResource ButtonCalculusStyle}"
-                        Text="⇦" />
+                        Text="&lt;-" />
                     <Button
                         Grid.Row="0"
                         Grid.Column="3"
@@ -335,9 +335,8 @@
                     <Button
                         Grid.Row="4"
                         Grid.Column="3"
-                        Padding="0,0,0,6"
+                        Padding="0,0,4,6"
                         Command="{Binding CalculusCommand}"
-                        FontSize="55"
                         IsEnabled="{Binding IsEnableCalculus}"
                         Style="{StaticResource ButtonCalculusStyle}"
                         Text="=" />
